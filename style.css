@@ -40,3 +40,41 @@ h6 {
 }
 
 /* || STYLES */
+img, svg {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+body {
+    font-family: var(--ff-main);
+    line-height: 1.5;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 2.5rem;
+    margin: 3rem 10rem 10rem 10rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid hsla(219, 9%, 45%, 0.2);
+}
+
+.header__link {
+    text-decoration: none;
+    color: var(--clr-dark-grayish-blue);
+    font-size: 0.9rem;
+}
+
+.header__end {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 3rem;
+}
+
+.header__end-avatar {
+    height: 3.2rem;
+}
