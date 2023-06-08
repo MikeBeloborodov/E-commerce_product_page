@@ -40,7 +40,8 @@ h6 {
 }
 
 /* || STYLES */
-img, svg {
+img,
+svg {
     max-width: 100%;
     width: auto;
     height: auto;
@@ -56,25 +57,172 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: start;
-    gap: 2.5rem;
-    margin: 3rem 10rem 10rem 10rem;
-    padding-bottom: 2rem;
     border-bottom: 1px solid hsla(219, 9%, 45%, 0.2);
+    padding: 1.5rem 2rem;
 }
 
-.header__link {
+.header__menu__link {
     text-decoration: none;
     color: var(--clr-dark-grayish-blue);
-    font-size: 0.9rem;
 }
 
 .header__end {
     display: flex;
     align-items: center;
     margin-left: auto;
-    gap: 3rem;
+    gap: 1.2rem;
 }
 
 .header__end-avatar {
-    height: 3.2rem;
+    cursor: pointer;
+    height: 1.5rem;
+}
+
+.header__end-cart {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-right: 1.2rem;
+}
+
+.burger__line {
+    width: 16px;
+    height: 3px;
+    background-color: var(--clr-very-dark-blue);
+    display: block;
+    opacity: 0.6;
+}
+
+.product__gallery-tumbnails {
+    display: none;
+}
+
+.product__description {
+    padding: 1rem 1.5rem 6rem;
+}
+
+.product__description__company-name {
+    color: var(--clr-orange);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1rem;
+}
+
+.product__description__product-title {
+    line-height: 1;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.product__description__product-about {
+    color: var(--clr-dark-grayish-blue);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.product__description__price {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 1.5rem 0;
+}
+
+.product__description__price-new {
+    font-weight: bold;
+    font-size: 1.9rem;
+    margin-right: 1rem;
+}
+
+.product__description__price-discount {
+    font-size: 1rem;
+    font-weight: var(--fw-bold);
+    color: var(--clr-orange);
+    background-color: var(--clr-pale-orange);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.4rem;
+}
+
+.product__description__price-old {
+    margin-left: auto;
+    color: var(--clr-grayish-blue);
+    font-weight: var(--fw-bold);
+    text-decoration: line-through;
+}
+
+.product__description__amount {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--clr-light-grayish-blue);
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-increase {
+    color: var(--clr-orange);
+    border: none;
+    background-color: var(--clr-light-grayish-blue);
+    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btn-decrease {
+    font-size: 2rem;
+}
+
+.product__description__amount-number {
+    font-weight: var(--fw-bold);
+}
+
+.btn-add_to_cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-orange);
+    color: var(--clr-white);
+    border: none;
+    font-weight: var(--fw-bold);
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: var(--ff-main);
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem 0 hsla(26, 100%, 55%, 0.3);
+    cursor: pointer;
+}
+
+.btn-add_to_cart__cart-icon {
+    margin-right: 1rem;
+    height: 1rem;
+}
+
+/* || UTILITY CLASSES */
+
+/* hide something from screen reader */
+/* https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html */
+.visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: insert(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* || MEDIA */
+
+@media screen and (min-width: 1200px) {
 }
