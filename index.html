@@ -23,7 +23,7 @@
   <body>
     <div class="side-menu hidden" id="side-menu">
       <div class="side-menu__icon-close" id="icon-close">
-        <img src="images/icon-close.svg" alt="">
+        <img src="images/icon-close.svg" alt="" />
       </div>
       <a href="/collections" class="side-menu__link">Collections</a>
       <a href="/men" class="side-menu__link">Men</a>
@@ -54,8 +54,10 @@
       </div>
       <div class="header__end">
         <div class="cart">
+          <p class="cart-amount-icon hidden" id="cart-amount-icon">0</p>
           <img
             class="header__end-cart"
+            id="cart-icon"
             src="images/icon-cart.svg"
             alt=""
             width="22"
@@ -72,6 +74,17 @@
       </div>
     </header>
     <main>
+      <div class="cart-box hidden" id="cart-box">
+        <div class="cart-box__header">
+          <p class="cart-box__header__title">Cart</p>
+        </div>
+        <div class="cart-box__body" id="cart-box-body">
+          <p class="cart-box__body__empty" id="cart-empty">
+            Your cart is empty.
+          </p>
+        </div>
+        <button class="btn-checkout hidden" id="checkout-button">Checkout</button>
+      </div>
       <div class="product">
         <div class="product__gallery">
           <div class="product__gallery__arrows-box">
@@ -132,7 +145,7 @@
       </div>
       <div class="product__description">
         <p class="product__description__company-name">Sneaker Company</p>
-        <h1 class="product__description__product-title">
+        <h1 class="product__description__product-title" id="product-title">
           Fall Limited Edition Sneakers
         </h1>
         <p class="product__description__product-about">
@@ -141,7 +154,7 @@
           the weather can offer.
         </p>
         <div class="product__description__price">
-          <p class="product__description__price-new">
+          <p class="product__description__price-new" id="price">
             <span class="visually-hidden">New price: </span>$125.00
           </p>
           <p class="product__description__price-discount">
@@ -158,7 +171,7 @@
           </p>
           <button class="btn-increase" id="btn-increase">+</button>
         </div>
-        <button class="btn-add_to_cart">
+        <button class="btn-add_to_cart" id="btn-add-to-cart">
           <img
             class="btn-add_to_cart__cart-icon"
             src="images/icon-cart-button.svg"
