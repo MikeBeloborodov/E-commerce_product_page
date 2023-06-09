@@ -490,6 +490,7 @@ header {
         grid-template-rows: 1fr;
         gap: 5rem;
         align-items: center;
+        max-width: 1300px;
     }
 
     .product__gallery {
