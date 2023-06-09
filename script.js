@@ -20,10 +20,16 @@ const $cartAmountIcon = $('#cart-amount-icon');
 const $cartBoxBody = $('#cart-box-body');
 const $cartEmpty = $('#cart-empty');
 const $checkoutButton = $('#checkout-button');
+const $modalGallery = $('#modal-gallery');
+const $modalMainImage = $('#modal-main-image');
+const $modalCloseIcon = $('#modal-close-icon');
+
 const $$tumbnails = $$('#tumbnail');
+const $$modalTumbnails = $$('#modal-tumbnail');
 
 var cartItems = [];
 var currentTumbnail = $$tumbnails[0];
+var currentModalTumbnail = $$modalTumbnails[0];
 
 // Functions
 
@@ -96,10 +102,10 @@ const cartItemsRendering = (item) => {
 
     cartBoxItem.appendChild(btnDeleteItem);
 
-    if (!$cartEmpty.className.includes('hidden')){
+    if (!$cartEmpty.className.includes('hidden')) {
         $cartEmpty.classList.toggle('hidden');
     }
-    if ($checkoutButton.className.includes('hidden')){
+    if ($checkoutButton.className.includes('hidden')) {
         $checkoutButton.classList.toggle('hidden');
     }
 
@@ -197,11 +203,49 @@ $$tumbnails.forEach((item) => {
     item.addEventListener('click', () => {
         const src = item.src
         $mainImg.src = src.replace('-thumbnail', '');
-        $$tumbnails.forEach((element) => {
+        $modalMainImage.src = $mainImg.src;
+        currentTumbnail.parentElement.classList.toggle('current-tumbnail')
+        currentTumbnail = item;
+        item.parentElement.classList.toggle('current-tumbnail');
+
+        currentModalTumbnail.parentElement.classList.toggle('current-tumbnail');
+        $$modalTumbnails.forEach((element) => {
+            if (element.src === item.src) {
+                currentModalTumbnail = element;
+                element.parentElement.classList.toggle('current-tumbnail');
+            }
+        })
+    })
+})
+
+$$modalTumbnails.forEach((item) => {
+    item.addEventListener('click', () => {
+        const src = item.src
+        $modalMainImage.src = src.replace('-thumbnail', '');
+        $$modalTumbnails.forEach((element) => {
             if (element.parentElement.className.includes('current-tumbnail')) {
                 element.parentElement.classList.toggle('current-tumbnail');
             }
         })
         item.parentElement.classList.toggle('current-tumbnail');
     })
+})
+
+$mainImg.addEventListener('click', () => {
+    $modal.classList.toggle('hidden');
+    $modalGallery.classList.toggle('hidden');
+    if (!currentModalTumbnail.parentElement.className.includes('current-tumbnail')) {
+        currentModalTumbnail.parentElement.classList.toggle('current-tumbnail');
+    }
+})
+
+$modalCloseIcon.addEventListener('click', () => {
+    $modal.classList.toggle('hidden');
+    $modalGallery.classList.toggle('hidden');
+    $modalMainImage.src = $mainImg.src;
+    $$modalTumbnails.forEach((element) => {
+        if (element.parentElement.className.includes('current-tumbnail')) {
+            element.parentElement.classList.toggle('current-tumbnail')
+        }
+    });
 })

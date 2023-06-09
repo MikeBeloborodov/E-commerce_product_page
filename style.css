@@ -436,6 +436,10 @@ header {
 /* || MEDIA */
 
 @media screen and (min-width: 1200px) {
+    main {
+        position: relative;
+    }
+
     body {
         padding: 0 10rem;
     }
@@ -579,5 +583,77 @@ header {
         margin: 0.5rem 1rem;
         border-radius: 0.5rem;
         box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-gallery {
+        z-index: 4;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin-top: -5rem;
+    }
+
+    .modal-gallery__box {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr 1fr;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .modal-gallery__img {
+        height: 35rem;
+        border-radius: 1rem;
+        grid-row: 2 span;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+
+    .modal-gallery__close {
+        grid-row: 1 span;
+        justify-self: end;
+        height: 1.5rem;
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+    }
+
+    .modal-tumbnails {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+
+    .modal-tumbnails__img {
+        height: 5rem;
+    }
+
+    .modal-tumbnails__img-wrapper {
+        background-color: white;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-clip: border-box;
+        cursor: pointer;
+    }
+
+    .modal-tumbnails__img-wrapper.current-tumbnail {
+        border-radius: 0.5rem;
+        outline: 2px solid var(--clr-orange);
+    }
+
+    .modal-tumbnails__img-wrapper.current-tumbnail>.modal-tumbnails__img {
+        opacity: 0.3;
+    }
+
+    .modal-tumbnails__img-wrapper:hover>.modal-tumbnails__img {
+        opacity: 0.5;
+    }
+
+    .modal-tumbnails__img-wrapper.current-tumbnail:hover>.modal-tumbnails__img {
+        opacity: 0.3;
+    }
+
+    .modal-gallery__close:hover {
+        filter: invert(52%) sepia(66%) saturate(2193%) hue-rotate(348deg) brightness(106%) contrast(101%)
     }
 }
