@@ -650,4 +650,27 @@ header {
     .modal-gallery__close:hover {
         filter: invert(52%) sepia(66%) saturate(2193%) hue-rotate(348deg) brightness(106%) contrast(101%)
     }
+
+    .modal-gallery__arrows-box {
+        position: absolute;
+        top: 19rem;
+        left: 0;
+        display: flex;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        gap: 32rem;
+        padding: 0 1rem;
+    }
+
+    .modal-arrow-container {
+        background-color: var(--clr-light-grayish-blue);
+        border-radius: 50%;
+        padding: 0.7rem 0.9rem;
+        cursor: pointer;
+    }
+
+    .modal-arrow-container:hover>.arrow {
+        filter: invert(57%) sepia(62%) saturate(2551%) hue-rotate(347deg) brightness(101%) contrast(101%);
+    }
 }

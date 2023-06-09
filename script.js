@@ -9,6 +9,8 @@ const $amountToAdd = $('#amount-to-add');
 const $mainImg = $('#main-img');
 const $nextImg = $('#next-img');
 const $prevImg = $('#prev-img');
+const $modalNextImg = $('#modal-next-img');
+const $modalPrevImg = $('#modal-prev-img');
 const $modal = $('#modal');
 const $burger = $('#burger');
 const $sideMenu = $('#side-menu');
@@ -131,24 +133,44 @@ const cartItemDelete = (item_id) => {
     cartAmountIconChange();
 }
 
-const changeImage = (tumbnail = currentTumbnail, changePos = false, vector = 'next') => {
+const changeImage = (tumbnail = currentTumbnail, changePos = false, vector = undefined, modal = false) => {
     if (tumbnail === currentTumbnail && !changePos) {
         return;
     }
-    if (changePos) {
-        const mainImageSrc = $mainImg.src
-        const imgNumber = parseInt(mainImageSrc.slice(-5, -4));
+    if (changePos && modal) {
+        const imgNumber = parseInt($modalMainImage.src.slice(-5, -4));
         if (vector === 'next' && imgNumber < 4) {
-            $mainImg.src = mainImageSrc.replace((imgNumber + '.jpg'), ((imgNumber + 1) + '.jpg'));
+            $modalMainImage.src = $modalMainImage.src.replace((imgNumber + '.jpg'), ((imgNumber + 1) + '.jpg'));
+            const tumbnailSrc = $modalMainImage.src.slice(0, -4) + '-thumbnail' + $mainImg.src.slice(-4);
+            changeTumbnailImage(true, undefined, tumbnailSrc);
+        } else if (vector === 'next' && imgNumber === 4) {
+            $modalMainImage.src = $modalMainImage.src.replace((imgNumber + '.jpg'), ((imgNumber - 3) + '.jpg'));
+            const tumbnailSrc = $modalMainImage.src.slice(0, -4) + '-thumbnail' + $mainImg.src.slice(-4);
+            changeTumbnailImage(true, undefined, tumbnailSrc);
+        } else if (vector === 'prev' && imgNumber > 1) {
+            $modalMainImage.src = $modalMainImage.src.replace((imgNumber + '.jpg'), ((imgNumber - 1) + '.jpg'));
+            const tumbnailSrc = $modalMainImage.src.slice(0, -4) + '-thumbnail' + $mainImg.src.slice(-4);
+            changeTumbnailImage(true, undefined, tumbnailSrc);
+        } else if (vector === 'prev' && imgNumber === 1) {
+            $modalMainImage.src = $modalMainImage.src.replace((imgNumber + '.jpg'), ((imgNumber + 3) + '.jpg'));
+            const tumbnailSrc = $modalMainImage.src.slice(0, -4) + '-thumbnail' + $mainImg.src.slice(-4);
+            changeTumbnailImage(true, undefined, tumbnailSrc);
+        }
+        return;
+
+    } else if (changePos) {
+        const imgNumber = parseInt($mainImg.src.slice(-5, -4));
+        if (vector === 'next' && imgNumber < 4) {
+            $mainImg.src = $mainImg.src.replace((imgNumber + '.jpg'), ((imgNumber + 1) + '.jpg'));
             changeTumbnailImage()
         } else if (vector === 'next' && imgNumber === 4) {
-            $mainImg.src = mainImageSrc.replace((imgNumber + '.jpg'), ((imgNumber - 3) + '.jpg'));
+            $mainImg.src = $mainImg.src.replace((imgNumber + '.jpg'), ((imgNumber - 3) + '.jpg'));
             changeTumbnailImage()
         } else if (vector === 'prev' && imgNumber > 1) {
-            $mainImg.src = mainImageSrc.replace((imgNumber + '.jpg'), ((imgNumber - 1) + '.jpg'));
+            $mainImg.src = $mainImg.src.replace((imgNumber + '.jpg'), ((imgNumber - 1) + '.jpg'));
             changeTumbnailImage()
         } else if (vector === 'prev' && imgNumber === 1) {
-            $mainImg.src = mainImageSrc.replace((imgNumber + '.jpg'), ((imgNumber + 3) + '.jpg'));
+            $mainImg.src = $mainImg.src.replace((imgNumber + '.jpg'), ((imgNumber + 3) + '.jpg'));
             changeTumbnailImage()
         }
         return;
@@ -170,7 +192,29 @@ const changeImage = (tumbnail = currentTumbnail, changePos = false, vector = 'ne
     }
 }
 
-const changeTumbnailImage = () => {
+const changeTumbnailImage = (modal = false, modal_item = undefined, modal_item_src) => {
+    if (modal) {
+        if (modal_item) {
+            var src = modal_item.src;
+        } else if (modal_item_src) {
+            var src = modal_item_src;
+            $$modalTumbnails.forEach((element) => {
+                if (element.src === modal_item_src) {
+                    modal_item = element;
+                }
+            })
+        }
+        $modalMainImage.src = src.replace('-thumbnail', '');
+        $$modalTumbnails.forEach((element) => {
+            if (element.parentElement.className.includes('current-tumbnail')) {
+                element.parentElement.classList.toggle('current-tumbnail');
+            }
+        })
+        modal_item.parentElement.classList.toggle('current-tumbnail');
+        currentModalTumbnail = modal_item
+        return;
+    }
+
     const tumbnailSrc = $mainImg.src.slice(0, -4) + '-thumbnail' + $mainImg.src.slice(-4);
     currentTumbnail.parentElement.classList.toggle('current-tumbnail');
     $$tumbnails.forEach((element) => {
@@ -184,11 +228,9 @@ const changeTumbnailImage = () => {
     $$modalTumbnails.forEach((element) => {
         if (element.src === tumbnailSrc) {
             currentModalTumbnail = element;
-            console.log("modal tumb changed");
         }
     })
     currentModalTumbnail.parentElement.classList.toggle('current-tumbnail');
-    console.log(currentModalTumbnail);
 
     $modalMainImage.src = $mainImg.src
 }
@@ -214,6 +256,14 @@ $nextImg.addEventListener('click', () => {
 $prevImg.addEventListener('click', () => {
     changeImage(currentTumbnail, true, 'prev');
 });
+
+$modalNextImg.addEventListener('click', () => {
+    changeImage(currentModalTumbnail, true, 'next', true);
+})
+
+$modalPrevImg.addEventListener('click', () => {
+    changeImage(currentModalTumbnail, true, 'prev', true);
+})
 
 $modal.addEventListener('click', () => {
     if (!matchMedia('(min-width: 1200px)').matches) {
@@ -261,15 +311,7 @@ $$tumbnails.forEach((item) => {
 
 $$modalTumbnails.forEach((item) => {
     item.addEventListener('click', () => {
-        const src = item.src
-        $modalMainImage.src = src.replace('-thumbnail', '');
-        $$modalTumbnails.forEach((element) => {
-            if (element.parentElement.className.includes('current-tumbnail')) {
-                element.parentElement.classList.toggle('current-tumbnail');
-            }
-        })
-        item.parentElement.classList.toggle('current-tumbnail');
-        currentModalTumbnail = item
+        changeTumbnailImage(true, item);
     })
 })
 
