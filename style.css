@@ -436,4 +436,43 @@ header {
 /* || MEDIA */
 
 @media screen and (min-width: 1200px) {
+    body {
+        padding: 0 10rem;
+    }
+
+    header {
+        margin-bottom: 10rem;
+        padding:0;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    .header__menu {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .header__end-avatar {
+        height: 3.5rem;
+    }
+
+    .header__menu__link {
+        padding: 2rem 0;
+    }
+
+    .header__menu__link:hover {
+        border-bottom: 4px solid var(--clr-orange);
+        padding-bottom: calc(2rem - 4px);
+    }
+
+    .header__logo {
+        margin-right: 3rem;
+    }
+
+    .header__end {
+        gap: 2.5rem;
+        margin-right: 1rem;
+    }
 }
