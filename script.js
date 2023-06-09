@@ -157,7 +157,6 @@ const changeImage = (tumbnail = currentTumbnail, changePos = false, vector = und
             changeTumbnailImage(true, undefined, tumbnailSrc);
         }
         return;
-
     } else if (changePos) {
         const imgNumber = parseInt($mainImg.src.slice(-5, -4));
         if (vector === 'next' && imgNumber < 4) {
