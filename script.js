@@ -287,6 +287,9 @@ $cartIcon.addEventListener('click', () => {
 
 $btnAddCart.addEventListener('click', () => {
     const amount = parseInt($amountToAdd.innerText);
+    if (amount === 0) {
+        return;
+    }
     const price = parseInt($price.innerText.replace(/[^0-9]/g, '')) / 100;
     const title = $productTitle.innerText
     const newItem = {
