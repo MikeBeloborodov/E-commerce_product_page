@@ -118,9 +118,12 @@
             height="1000"
           />
           <div class="product__gallery-tumbnails">
-            <div class="product__gallery-tumbnails__img-wrapper current-tumbnail">
+            <div
+              class="product__gallery-tumbnails__img-wrapper current-tumbnail"
+            >
               <img
                 class="product__gallery-tumbnails__img"
+                id="tumbnail"
                 src="images/image-product-1-thumbnail.jpg"
                 alt=""
                 width="176"
@@ -130,6 +133,7 @@
             <div class="product__gallery-tumbnails__img-wrapper">
               <img
                 class="product__gallery-tumbnails__img"
+                id="tumbnail"
                 src="images/image-product-2-thumbnail.jpg"
                 alt=""
                 width="176"
@@ -139,6 +143,7 @@
             <div class="product__gallery-tumbnails__img-wrapper">
               <img
                 class="product__gallery-tumbnails__img"
+                id="tumbnail"
                 src="images/image-product-3-thumbnail.jpg"
                 alt=""
                 width="176"
@@ -148,6 +153,7 @@
             <div class="product__gallery-tumbnails__img-wrapper">
               <img
                 class="product__gallery-tumbnails__img"
+                id="tumbnail"
                 src="images/image-product-4-thumbnail.jpg"
                 alt=""
                 width="176"
@@ -177,25 +183,27 @@
               <span class="visually-hidden">Old price:</span>$250.00
             </p>
           </div>
-          <div class="product__description__amount">
-            <button class="btn-increase btn-decrease" id="btn-decrease">
-              -
+          <div class="product__description__purchase-box">
+            <div class="product__description__amount">
+              <button class="btn-increase btn-decrease" id="btn-decrease">
+                -
+              </button>
+              <p class="product__description__amount-number" id="amount-to-add">
+                0
+              </p>
+              <button class="btn-increase" id="btn-increase">+</button>
+            </div>
+            <button class="btn-add_to_cart" id="btn-add-to-cart">
+              <img
+                class="btn-add_to_cart__cart-icon"
+                src="images/icon-cart-button.svg"
+                alt=""
+                width="22"
+                height="20"
+              />
+              Add to cart
             </button>
-            <p class="product__description__amount-number" id="amount-to-add">
-              0
-            </p>
-            <button class="btn-increase" id="btn-increase">+</button>
           </div>
-          <button class="btn-add_to_cart" id="btn-add-to-cart">
-            <img
-              class="btn-add_to_cart__cart-icon"
-              src="images/icon-cart-button.svg"
-              alt=""
-              width="22"
-              height="20"
-            />
-            Add to cart
-          </button>
         </div>
       </div>
     </main>

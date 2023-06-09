@@ -20,8 +20,10 @@ const $cartAmountIcon = $('#cart-amount-icon');
 const $cartBoxBody = $('#cart-box-body');
 const $cartEmpty = $('#cart-empty');
 const $checkoutButton = $('#checkout-button');
+const $$tumbnails = $$('#tumbnail');
 
 var cartItems = [];
+var currentTumbnail = $$tumbnails[0];
 
 // Functions
 
@@ -190,3 +192,16 @@ $btnAddCart.addEventListener('click', () => {
     cartAmountIconChange();
     cartItemsRendering(newItem);
 });
+
+$$tumbnails.forEach((item) => {
+    item.addEventListener('click', () => {
+        const src = item.src
+        $mainImg.src = src.replace('-thumbnail', '');
+        $$tumbnails.forEach((element) => {
+            if (element.parentElement.className.includes('current-tumbnail')) {
+                element.parentElement.classList.toggle('current-tumbnail');
+            }
+        })
+        item.parentElement.classList.toggle('current-tumbnail');
+    })
+})
