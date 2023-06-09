@@ -83,7 +83,9 @@
             Your cart is empty.
           </p>
         </div>
-        <button class="btn-checkout hidden" id="checkout-button">Checkout</button>
+        <button class="btn-checkout hidden" id="checkout-button">
+          Checkout
+        </button>
       </div>
       <div class="product">
         <div class="product__gallery">
@@ -116,71 +118,85 @@
             height="1000"
           />
           <div class="product__gallery-tumbnails">
-            <img
-              src="images/image-product-1-thumbnail.jpg"
-              alt=""
-              width="176"
-              height="176"
-            />
-            <img
-              src="images/image-product-2-thumbnail.jpg"
-              alt=""
-              width="176"
-              height="176"
-            />
-            <img
-              src="images/image-product-3-thumbnail.jpg"
-              alt=""
-              width="176"
-              height="176"
-            />
-            <img
-              src="images/image-product-4-thumbnail.jpg"
-              alt=""
-              width="176"
-              height="176"
-            />
+            <div class="product__gallery-tumbnails__img-wrapper current-tumbnail">
+              <img
+                class="product__gallery-tumbnails__img"
+                src="images/image-product-1-thumbnail.jpg"
+                alt=""
+                width="176"
+                height="176"
+              />
+            </div>
+            <div class="product__gallery-tumbnails__img-wrapper">
+              <img
+                class="product__gallery-tumbnails__img"
+                src="images/image-product-2-thumbnail.jpg"
+                alt=""
+                width="176"
+                height="176"
+              />
+            </div>
+            <div class="product__gallery-tumbnails__img-wrapper">
+              <img
+                class="product__gallery-tumbnails__img"
+                src="images/image-product-3-thumbnail.jpg"
+                alt=""
+                width="176"
+                height="176"
+              />
+            </div>
+            <div class="product__gallery-tumbnails__img-wrapper">
+              <img
+                class="product__gallery-tumbnails__img"
+                src="images/image-product-4-thumbnail.jpg"
+                alt=""
+                width="176"
+                height="176"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="product__description">
-        <p class="product__description__company-name">Sneaker Company</p>
-        <h1 class="product__description__product-title" id="product-title">
-          Fall Limited Edition Sneakers
-        </h1>
-        <p class="product__description__product-about">
-          These low-profile sneakers are your perfect casual wear companion.
-          Featuring a durable rubber outer sole, they’ll withstand everything
-          the weather can offer.
-        </p>
-        <div class="product__description__price">
-          <p class="product__description__price-new" id="price">
-            <span class="visually-hidden">New price: </span>$125.00
+        <div class="product__description">
+          <p class="product__description__company-name">Sneaker Company</p>
+          <h1 class="product__description__product-title" id="product-title">
+            Fall Limited Edition Sneakers
+          </h1>
+          <p class="product__description__product-about">
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
           </p>
-          <p class="product__description__price-discount">
-            <span class="visually-hidden">Dscount: </span>50%
-          </p>
-          <p class="product__description__price-old">
-            <span class="visually-hidden">Old price:</span>$250.00
-          </p>
+          <div class="product__description__price">
+            <p class="product__description__price-new" id="price">
+              <span class="visually-hidden">New price: </span>$125.00
+            </p>
+            <p class="product__description__price-discount">
+              <span class="visually-hidden">Dscount: </span>50%
+            </p>
+            <p class="product__description__price-old">
+              <span class="visually-hidden">Old price:</span>$250.00
+            </p>
+          </div>
+          <div class="product__description__amount">
+            <button class="btn-increase btn-decrease" id="btn-decrease">
+              -
+            </button>
+            <p class="product__description__amount-number" id="amount-to-add">
+              0
+            </p>
+            <button class="btn-increase" id="btn-increase">+</button>
+          </div>
+          <button class="btn-add_to_cart" id="btn-add-to-cart">
+            <img
+              class="btn-add_to_cart__cart-icon"
+              src="images/icon-cart-button.svg"
+              alt=""
+              width="22"
+              height="20"
+            />
+            Add to cart
+          </button>
         </div>
-        <div class="product__description__amount">
-          <button class="btn-increase btn-decrease" id="btn-decrease">-</button>
-          <p class="product__description__amount-number" id="amount-to-add">
-            0
-          </p>
-          <button class="btn-increase" id="btn-increase">+</button>
-        </div>
-        <button class="btn-add_to_cart" id="btn-add-to-cart">
-          <img
-            class="btn-add_to_cart__cart-icon"
-            src="images/icon-cart-button.svg"
-            alt=""
-            width="22"
-            height="20"
-          />
-          Add to cart
-        </button>
       </div>
     </main>
     <script src="script.js"></script>
