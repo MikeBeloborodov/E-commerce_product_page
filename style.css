@@ -410,7 +410,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% + var(--bottom-body-padding));
+    height: 100svh;
     z-index: 2;
     opacity: 0.7;
 }
@@ -574,15 +574,9 @@ header {
     }
 
     .cart-box {
-        position: absolute;
-        z-index: 1;
-        background-color: white;
-        top: 6rem;
-        right: 7rem;
+        top: -8rem;
+        right: 0rem;
         width: 23rem;
-        margin: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.4);
     }
 
     .modal-gallery {
